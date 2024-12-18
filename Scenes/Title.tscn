@@ -1,0 +1,115 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Fonts/Koulen-Regular.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="Animation" id=5]
+resource_name = "TitleSlide"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel 1:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1270, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel 2:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1923, 80 ), Vector2( 693, 80 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+shadow_color = Color( 0, 0, 0, 0.207843 )
+shadow_size = 4
+
+[sub_resource type="DynamicFont" id=2]
+size = 65
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="SphereMesh" id=4]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Title Panel" type="Panel" parent="."]
+editor/display_folded = true
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -285.0
+margin_bottom = -85.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title Panel"]
+autoplay = "TitleSlide"
+playback_speed = 0.5
+anims/TitleSlide = SubResource( 5 )
+
+[node name="Panel 1" type="Panel" parent="Title Panel"]
+editor/display_folded = true
+margin_right = 1266.0
+margin_bottom = 120.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label2" type="Label" parent="Title Panel/Panel 1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.247059, 0.270588, 0.32549, 1 )
+text = "The Truth"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Panel 2" type="Panel" parent="Title Panel"]
+editor/display_folded = true
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1227.0
+margin_top = -120.0
+margin_right = -0.00170898
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label2" type="Label" parent="Title Panel/Panel 2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.247059, 0.270588, 0.32549, 1 )
+text = "Formula"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Scene" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Scene"]
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 5.34248, 0 )
+shadow_enabled = true
+
+[node name="Camera" type="Camera" parent="Scene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.19443 )
+
+[node name="Sphere" type="MeshInstance" parent="Scene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.07366 )
+mesh = SubResource( 4 )
+material/0 = null
